@@ -212,3 +212,16 @@ class MovieWatchlistCLI:
             click.echo("Review deleted successfully.")
         else:
             click.echo("Review not found.")
+
+    def category_management(self):
+        """Handle category management operations."""
+        while True:
+            self.category_management_menu()
+            choice = click.prompt("Enter your choice", type=int)
+
+            if choice == 1:
+                self.list_categories()
+            elif choice == 2:
+                break
+            else:
+                click.echo("Invalid choice. Please try again.")
