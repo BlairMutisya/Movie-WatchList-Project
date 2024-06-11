@@ -177,3 +177,29 @@ class MovieWatchlistCLI:
                 break
             else:
                 click.echo("Invalid choice. Please try again.")
+
+    def review_management_menu(self):
+        """Display the review management menu."""
+        click.echo("1. Add a review to a movie.")
+        click.echo("2. Delete a review by ID.")
+        click.echo("3. Return to main menu")
+
+    def add_review(self):
+        """Add a review to a movie."""
+        movie_id = click.prompt("Enter the ID of the movie to add a review", type=int)
+        while True:
+            try:
+                rating = click.prompt("Enter the rating for the movie (1 to 5 stars)", type=float)
+                if not (1 <= rating <= 5):
+                    raise ValueError("Rating must be between 1 and 5 stars.")
+                break  # If valid, exit the loop
+            except ValueError as e:
+                click.echo(str(e))
+        
+        comment = click.prompt("Enter your comment for the movie")
+
+        try:
+            review = Review.create(self.session, movie_id, rating, comment)
+            click.echo(f"Review added: {review}")
+        except Exception as e:
+            click.echo(f"Failed to add review: {str(e)}")
