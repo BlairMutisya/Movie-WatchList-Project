@@ -27,4 +27,9 @@ class Category(Base):
             session.commit()
             return True
         return False
+    
+    @classmethod
+    def get_all(cls, session):
+        return session.query(cls).all()
+
 
