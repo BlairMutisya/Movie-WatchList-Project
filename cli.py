@@ -103,3 +103,5 @@ class MovieWatchlistCLI:
 
         movie = Movie.create(self.session, title, director, genre, category_id)
         click.echo(f"Movie added: {movie}")
+    def delete_movie(self):
+        """Delete a movie from the watchlist by ID."""
