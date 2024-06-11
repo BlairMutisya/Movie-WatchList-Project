@@ -93,3 +93,6 @@ class MovieWatchlistCLI:
                 break
             else:
                 click.echo("Invalid choice. Please try again.")
+
+    def add_movie(self):
+        """Add a new movie to the watchlist."""
