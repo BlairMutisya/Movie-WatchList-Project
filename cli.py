@@ -1,12 +1,12 @@
-import click 
+import click
 from helpers import SessionLocal, Movie, Review, Category
-from models import Base 
+from models import Base
 from sqlalchemy.exc import OperationalError
 
 class MovieWatchlistCLI:
     def __init__(self):
         self.session = SessionLocal()
-        self.database_initialized = False
+        self.database_initialized = False  # Flag to track if the database is initialized
 
     def display_menu(self):
         """Display the main menu."""
@@ -15,7 +15,7 @@ class MovieWatchlistCLI:
         click.echo("3. Review Management")
         click.echo("4. Category Management")
         click.echo("5. Exit")
-    
+
     def run(self):
         """Run the CLI application."""
         while True:
@@ -58,6 +58,7 @@ class MovieWatchlistCLI:
         except OperationalError:
             click.echo("Database not initialized. Please initialize the database first.")
             return False
+
     def movie_management_menu(self):
         """Display the movie management menu."""
         click.echo("1. Add a new movie to the watchlist.")
@@ -103,6 +104,7 @@ class MovieWatchlistCLI:
 
         movie = Movie.create(self.session, title, director, genre, category_id)
         click.echo(f"Movie added: {movie}")
+
     def delete_movie(self):
         """Delete a movie from the watchlist by ID."""
         movie_id = click.prompt("Enter the ID of the movie to delete", type=int)
@@ -132,7 +134,7 @@ class MovieWatchlistCLI:
             click.echo(f"ID: {movie.id}, Title: {movie.title}, Director: {movie.director}, Genre: {movie.genre}, Watched: {watched_status}, Category ID: {movie.category_id}")
         else:
             click.echo("Movie not found.")
-            
+
     def list_movies_by_category(self):
         """List all movies in a specific category."""
         category_id = click.prompt("Enter the ID of the category to list movies", type=int)
