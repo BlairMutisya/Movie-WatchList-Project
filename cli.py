@@ -203,3 +203,12 @@ class MovieWatchlistCLI:
             click.echo(f"Review added: {review}")
         except Exception as e:
             click.echo(f"Failed to add review: {str(e)}")
+
+    def delete_review(self):
+        """Delete a review by ID."""
+        review_id = click.prompt("Enter the ID of the review to delete", type=int)
+        success = Review.delete(self.session, review_id)
+        if success:
+            click.echo("Review deleted successfully.")
+        else:
+            click.echo("Review not found.")
