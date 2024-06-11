@@ -71,3 +71,25 @@ class MovieWatchlistCLI:
 
     def movie_management(self):
         """Handle movie management operations."""
+        while True:
+            self.movie_management_menu()
+            choice = click.prompt("Enter your choice", type=int)
+
+            if choice == 1:
+                self.add_movie()
+            elif choice == 2:
+                self.delete_movie()
+            elif choice == 3:
+                self.list_movies()
+            elif choice == 4:
+                self.show_movie_details()
+            elif choice == 5:
+                self.list_movies_by_category()
+            elif choice == 6:
+                self.mark_movie_watched()
+            elif choice == 7:
+                self.mark_movie_not_watched()
+            elif choice == 8:
+                break
+            else:
+                click.echo("Invalid choice. Please try again.")
