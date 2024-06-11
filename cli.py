@@ -143,3 +143,12 @@ class MovieWatchlistCLI:
                 click.echo(f"ID: {movie.id}, Title: {movie.title}, Watched: {watched_status}")
         else:
             click.echo("No movies found in this category.")
+
+    def mark_movie_watched(self):
+        """Mark a movie as watched."""
+        movie_id = click.prompt("Enter the ID of the movie to mark as watched", type=int)
+        movie = Movie.mark_watched(self.session, movie_id, watched=True)
+        if movie:
+            click.echo(f"Movie '{movie.title}' marked as watched.")
+        else:
+            click.echo("Movie not found.")
