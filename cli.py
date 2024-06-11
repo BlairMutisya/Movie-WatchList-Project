@@ -105,3 +105,9 @@ class MovieWatchlistCLI:
         click.echo(f"Movie added: {movie}")
     def delete_movie(self):
         """Delete a movie from the watchlist by ID."""
+        movie_id = click.prompt("Enter the ID of the movie to delete", type=int)
+        success = Movie.delete(self.session, movie_id)
+        if success:
+            click.echo("Movie deleted successfully.")
+        else:
+            click.echo("Movie not found.")
