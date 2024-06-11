@@ -58,3 +58,13 @@ class MovieWatchlistCLI:
         except OperationalError:
             click.echo("Database not initialized. Please initialize the database first.")
             return False
+    def movie_management_menu(self):
+        """Display the movie management menu."""
+        click.echo("1. Add a new movie to the watchlist.")
+        click.echo("2. Delete a movie from the watchlist by ID.")
+        click.echo("3. List all movies in the watchlist.")
+        click.echo("4. Show details for a specific movie by ID.")
+        click.echo("5. List all movies in a specific category.")
+        click.echo("6. Mark a movie as watched.")
+        click.echo("7. Mark a movie as not watched.")
+        click.echo("8. Return to main menu")
