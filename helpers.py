@@ -18,4 +18,13 @@ class Category(Base):
         session.add(category)
         session.commit()
         return category
+    
+    @classmethod
+    def delete(cls, session, category_id):
+        category = session.query(cls).filter_by(id=category_id).one_or_none()
+        if category:
+            session.delete(category)
+            session.commit()
+            return True
+        return False
 
