@@ -125,3 +125,10 @@ class MovieWatchlistCLI:
 
     def show_movie_details(self):
         """Show details for a specific movie by ID."""
+        movie_id = click.prompt("Enter the ID of the movie to show details", type=int)
+        movie = Movie.find_by_id(self.session, movie_id)
+        if movie:
+            watched_status = "Watched" if movie.watched else "Not Watched"
+            click.echo(f"ID: {movie.id}, Title: {movie.title}, Director: {movie.director}, Genre: {movie.genre}, Watched: {watched_status}, Category ID: {movie.category_id}")
+        else:
+            click.echo("Movie not found.")
