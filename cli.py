@@ -45,3 +45,6 @@ class MovieWatchlistCLI:
         Base.metadata.create_all(self.session.bind)
         self.database_initialized = True
         click.echo("Database initialized successfully.")
+
+    def check_initialization(self):
+        """Check if the database is initialized."""
