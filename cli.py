@@ -132,3 +132,14 @@ class MovieWatchlistCLI:
             click.echo(f"ID: {movie.id}, Title: {movie.title}, Director: {movie.director}, Genre: {movie.genre}, Watched: {watched_status}, Category ID: {movie.category_id}")
         else:
             click.echo("Movie not found.")
+    def list_movies_by_category(self):
+        """List all movies in a specific category."""
+        category_id = click.prompt("Enter the ID of the category to list movies", type=int)
+        movies = Movie.find_by_category(self.session, category_id)
+        if movies:
+            click.echo(f"Movies in category {category_id}:")
+            for movie in movies:
+                watched_status = "Watched" if movie.watched else "Not Watched"
+                click.echo(f"ID: {movie.id}, Title: {movie.title}, Watched: {watched_status}")
+        else:
+            click.echo("No movies found in this category.")
