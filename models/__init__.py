@@ -9,3 +9,4 @@ Base = declarative_base()
 
 def init_db():
     from helpers import Movie, Review, Category 
+    Base.metadata.create_all(bind=engine)
