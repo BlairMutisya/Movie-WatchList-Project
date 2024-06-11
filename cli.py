@@ -225,3 +225,8 @@ class MovieWatchlistCLI:
                 break
             else:
                 click.echo("Invalid choice. Please try again.")
+                
+    def category_management_menu(self):
+        """Display the category management menu."""
+        click.echo("1. List all categories.")
+        click.echo("2. Return to main menu")
