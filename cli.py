@@ -157,3 +157,12 @@ class MovieWatchlistCLI:
         while True:
             self.review_management_menu()
             choice = click.prompt("Enter your choice", type=int)
+
+            if choice == 1:
+                self.add_review()
+            elif choice == 2:
+                self.delete_review()
+            elif choice == 3:
+                break
+            else:
+                click.echo("Invalid choice. Please try again.")
