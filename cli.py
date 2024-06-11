@@ -132,6 +132,7 @@ class MovieWatchlistCLI:
             click.echo(f"ID: {movie.id}, Title: {movie.title}, Director: {movie.director}, Genre: {movie.genre}, Watched: {watched_status}, Category ID: {movie.category_id}")
         else:
             click.echo("Movie not found.")
+            
     def list_movies_by_category(self):
         """List all movies in a specific category."""
         category_id = click.prompt("Enter the ID of the category to list movies", type=int)
@@ -152,17 +153,12 @@ class MovieWatchlistCLI:
             click.echo(f"Movie '{movie.title}' marked as watched.")
         else:
             click.echo("Movie not found.")
-    def review_management(self):
-        """Handle review management operations."""
-        while True:
-            self.review_management_menu()
-            choice = click.prompt("Enter your choice", type=int)
 
-            if choice == 1:
-                self.add_review()
-            elif choice == 2:
-                self.delete_review()
-            elif choice == 3:
-                break
-            else:
-                click.echo("Invalid choice. Please try again.")
+    def mark_movie_not_watched(self):
+        """Mark a movie as not watched."""
+        movie_id = click.prompt("Enter the ID of the movie to mark as not watched", type=int)
+        movie = Movie.mark_watched(self.session, movie_id, watched=False)
+        if movie:
+            click.echo(f"Movie '{movie.title}' marked as not watched.")
+        else:
+            click.echo("Movie not found.")
