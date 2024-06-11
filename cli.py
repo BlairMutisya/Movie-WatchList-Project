@@ -68,3 +68,6 @@ class MovieWatchlistCLI:
         click.echo("6. Mark a movie as watched.")
         click.echo("7. Mark a movie as not watched.")
         click.echo("8. Return to main menu")
+
+    def movie_management(self):
+        """Handle movie management operations."""
