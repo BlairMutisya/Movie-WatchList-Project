@@ -38,3 +38,10 @@ class MovieWatchlistCLI:
                 break
             else:
                 click.echo("Invalid choice. Please try again.")
+
+    def initialize_database(self):
+        """Initialize the database by creating all necessary tables."""
+        click.echo("Initializing the database...")
+        Base.metadata.create_all(self.session.bind)
+        self.database_initialized = True
+        click.echo("Database initialized successfully.")
