@@ -83,6 +83,14 @@ class Movie(Base):
     def find_by_category(cls, session, category_id):
         return session.query(cls).filter_by(category_id=category_id).all()
 
+    @classmethod
+    def mark_watched(cls, session, movie_id, watched=True):
+        movie = cls.find_by_id(session, movie_id)
+        if movie:
+            movie.watched = watched
+            session.commit()
+            return movie
+        return None
 
 
 
