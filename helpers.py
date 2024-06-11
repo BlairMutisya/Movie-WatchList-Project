@@ -31,5 +31,10 @@ class Category(Base):
     @classmethod
     def get_all(cls, session):
         return session.query(cls).all()
+    
+    @classmethod
+    def find_by_id(cls, session, category_id):
+        return session.query(cls).filter_by(id=category_id).one_or_none()
+
 
 
