@@ -62,6 +62,15 @@ class Movie(Base):
         session.commit()
         return movie
 
+    @classmethod
+    def delete(cls, session, movie_id):
+        movie = session.query(cls).filter_by(id=movie_id).one_or_none()
+        if movie:
+            session.delete(movie)
+            session.commit()
+            return True
+        return False
+
 
 
 
