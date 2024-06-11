@@ -39,6 +39,22 @@ class Category(Base):
     @classmethod
     def find_by_name(cls, session, name):
         return session.query(cls).filter_by(name=name).one_or_none()
+    
+class Movie(Base):
+    __tablename__ = 'movies'
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, nullable=False)
+    director = Column(String, nullable=False)
+    genre = Column(String, nullable=False)
+    watched = Column(Boolean, default=False)
+    category_id = Column(Integer, ForeignKey('categories.id'), nullable=True)
+    category = relationship('Category', back_populates='movies')
+    reviews = relationship('Review', back_populates='movie', cascade='all, delete-orphan')
+
+    def __repr__(self):
+        return f"<Movie(id={self.id}, title={self.title}, director={self.director}, genre={self.genre}, watched={self.watched}, category_id={self.category_id})>"
+
 
 
 
