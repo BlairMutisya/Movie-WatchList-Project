@@ -122,3 +122,6 @@ class MovieWatchlistCLI:
                 click.echo(f"ID: {movie.id}, Title: {movie.title}, Director: {movie.director}, Genre: {movie.genre}, Watched: {watched_status}, Category ID: {movie.category_id}")
         else:
             click.echo("No movies found in the watchlist.")
+
+    def show_movie_details(self):
+        """Show details for a specific movie by ID."""
