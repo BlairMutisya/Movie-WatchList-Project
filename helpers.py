@@ -124,6 +124,8 @@ class Review(Base):
     def get_all(cls, session):
         return session.query(cls).all()
 
-
+    @classmethod
+    def find_by_id(cls, session, review_id):
+        return session.query(cls).filter_by(id=review_id).one_or_none()
 
 
