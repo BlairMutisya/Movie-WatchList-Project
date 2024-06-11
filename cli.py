@@ -236,3 +236,7 @@ class MovieWatchlistCLI:
         categories = Category.get_all(self.session)
         for category in categories:
             click.echo(f"ID: {category.id}, Name: {category.name}")
+
+if __name__ == '__main__':
+    cli = MovieWatchlistCLI()
+    cli.run()
