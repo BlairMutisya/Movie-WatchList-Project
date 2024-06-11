@@ -104,6 +104,12 @@ class Review(Base):
     def __repr__(self):
         return f"<Review(id={self.id}, rating={self.rating}, comment={self.comment}, movie_id={self.movie_id})>"
 
+    @classmethod
+    def create(cls, session, movie_id, rating, comment):
+        review = cls(movie_id=movie_id, rating=rating, comment=comment)
+        session.add(review)
+        session.commit()
+        return review
 
 
 
