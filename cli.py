@@ -114,3 +114,11 @@ class MovieWatchlistCLI:
 
     def list_movies(self):
         """List all movies in the watchlist with their IDs and watched status."""
+        movies = Movie.get_all(self.session)
+        if movies:
+            click.echo("List of movies in the watchlist:")
+            for movie in movies:
+                watched_status = "Watched" if movie.watched else "Not Watched"
+                click.echo(f"ID: {movie.id}, Title: {movie.title}, Director: {movie.director}, Genre: {movie.genre}, Watched: {watched_status}, Category ID: {movie.category_id}")
+        else:
+            click.echo("No movies found in the watchlist.")
