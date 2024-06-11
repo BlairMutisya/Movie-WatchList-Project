@@ -92,6 +92,17 @@ class Movie(Base):
             return movie
         return None
 
+class Review(Base):
+    __tablename__ = 'reviews'
+
+    id = Column(Integer, primary_key=True, index=True)
+    rating = Column(Float, nullable=False)
+    comment = Column(String, nullable=True)
+    movie_id = Column(Integer, ForeignKey('movies.id'))
+    movie = relationship('Movie', back_populates='reviews')
+
+    def __repr__(self):
+        return f"<Review(id={self.id}, rating={self.rating}, comment={self.comment}, movie_id={self.movie_id})>"
 
 
 
