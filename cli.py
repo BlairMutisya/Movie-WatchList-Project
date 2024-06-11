@@ -48,3 +48,13 @@ class MovieWatchlistCLI:
 
     def check_initialization(self):
         """Check if the database is initialized."""
+        if self.database_initialized:
+            return True
+        try:
+            # Check if any table exists
+            self.session.execute('SELECT 1 FROM movies LIMIT 1')
+            self.database_initialized = True
+            return True
+        except OperationalError:
+            click.echo("Database not initialized. Please initialize the database first.")
+            return False
