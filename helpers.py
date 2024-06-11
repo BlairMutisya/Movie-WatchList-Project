@@ -79,6 +79,9 @@ class Movie(Base):
     def find_by_id(cls, session, movie_id):
         return session.query(cls).filter_by(id=movie_id).one_or_none()
 
+    @classmethod
+    def find_by_category(cls, session, category_id):
+        return session.query(cls).filter_by(category_id=category_id).all()
 
 
 
