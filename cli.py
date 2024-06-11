@@ -152,3 +152,8 @@ class MovieWatchlistCLI:
             click.echo(f"Movie '{movie.title}' marked as watched.")
         else:
             click.echo("Movie not found.")
+    def review_management(self):
+        """Handle review management operations."""
+        while True:
+            self.review_management_menu()
+            choice = click.prompt("Enter your choice", type=int)
