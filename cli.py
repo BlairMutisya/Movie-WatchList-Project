@@ -111,3 +111,6 @@ class MovieWatchlistCLI:
             click.echo("Movie deleted successfully.")
         else:
             click.echo("Movie not found.")
+
+    def list_movies(self):
+        """List all movies in the watchlist with their IDs and watched status."""
