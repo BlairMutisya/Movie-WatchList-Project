@@ -111,6 +111,14 @@ class Review(Base):
         session.commit()
         return review
 
+    @classmethod
+    def delete(cls, session, review_id):
+        review = session.query(cls).filter_by(id=review_id).one_or_none()
+        if review:
+            session.delete(review)
+            session.commit()
+            return True
+        return False
 
 
 
