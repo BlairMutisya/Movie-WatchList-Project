@@ -1,6 +1,6 @@
-# Movie Watchlist CLI
+# Movie Watchlist Project
 
-The Movie Watchlist CLI is a command-line application designed to help users manage their list of movies. With this tool, you can add movies to your watchlist, categorize them, review them, and update their watch status.
+The Movie Watchlist Project is a command-line application designed to help users manage their list of movies. With this tool, you can add movies to your watchlist, categorize them, review them, and update their watch status.
 
 ## Features
 
@@ -11,7 +11,7 @@ The Movie Watchlist CLI is a command-line application designed to help users man
 
 ## Project Structure
 ```
-Movie-Watchlist-CLI/
+Movie-Watchlist-Project/
 ├── Pipfile
 ├── Pipfile.lock
 ├── README.md
@@ -43,7 +43,7 @@ Movie-Watchlist-CLI/
 First, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/Movie-Watchlist-CLI.git
+git clone https://github.com/yourusername/Movie-Watchlist-Project.git
 cd Movie-Watchlist-CLI
 ```
 ### 2. Install Pipenv
